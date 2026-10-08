@@ -40,32 +40,74 @@ console.log(`Array: ${numbers}`);
 
 // ******* Sequential Search ********
 // Create the sequentialSearch function.
-// parameter: array to search and key to be found
+// parameters: array to search and key to be found
 // returns: the index of the element or -1 if not found
 
-function sequentialSearch(searchArray, target) {
+// function sequentialSearch(searchArray, target) {
+//   // Set the found value to -1 (not found)
+//   // If found >= 0, the target was found.
+//   let found = -1;
+//   for (i = 0; i < searchArray.length; i++) {
+//     if (searchArray[i] === target) {
+//       found = i;
+//       break;
+//     }
+//   }
+//   return found;
+// }
+
+// ********* Binary Search **********
+// Create the search function.
+// parameters: array to search and key to be found
+// returns: the index of the element or -1 if not found
+
+function binarySearch(searchArray, target) {
+  // binarySeach works only on sorted arrays.
+  // Therefore, first thing to do is sort the array.
+  const sortedArrayA = searchArray.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(`Sorted Array: ${sortedArrayA}`);
   // Set the found value to -1 (not found)
   // If found >= 0, the target was found.
   let found = -1;
-  for (i = 0; i < searchArray.length; i++) {
-    if (searchArray[i] == target) {
-      found = i;
+  // init the start and end points
+  let start = 0;
+  let end = searchArray.length - 1;
+  // Loop through while the start does not meet the end
+  while (start <= end) {
+    // Find the mid index
+    let mid = Math.floor((start + end) / 2);
+    // Test if the element is present at the mid.
+    if (searchArray[mid] === target) {
+      found = mid;
       break;
+    } else if (searchArray[mid] < target) {
+      // look in the right half
+      start = mid + 1;
+    } else {
+      // look in the left half
+      end = mid - 1;
     }
-  }
+  } // End While
   return found;
 }
 
+// ******** Testing the Search Functions ************
+
 // Set the value we are searching for.
 //let value = 25; // found value
-//let value = 60; // not found value
+let value = 60; // not found value
 console.log(`Value: ${value}`);
 
 // Call the sequentialSearch function
-let result = sequentialSearch(numbers, value);
+// const result = sequentialSearch(numbers, value);
+
+// Call the binarySeach function
+const result = binarySearch(numbers, value);
 
 // Output results
-if (result == -1) {
+if (result === -1) {
   console.log(`The value of ${value} was not found`);
 } else {
   console.log(`The value of ${value} was found at index ${result}`);
