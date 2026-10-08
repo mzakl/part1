@@ -27,3 +27,11 @@ const newSortedNumbersA = sortedNumbersA.sort(function (a, b) {
   return a - b;
 });
 console.log(`Array with Newly Added Numbers Sorted: ${newSortedNumbersA}`);
+
+// Remove number 8
+newSortedNumbersA.splice(2, 1);
+
+// Remove number 31
+newSortedNumbersA.splice(10, 1);
+
+console.log(`Array with Numbers Removed: ${newSortedNumbersA}`);
