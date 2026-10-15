@@ -73,16 +73,16 @@ function binarySearch(searchArray, target) {
   let found = -1;
   // init the start and end points
   let start = 0;
-  let end = searchArray.length - 1;
+  let end = sortedArrayA.length - 1;
   // Loop through while the start does not meet the end
   while (start <= end) {
     // Find the mid index
     let mid = Math.floor((start + end) / 2);
     // Test if the element is present at the mid.
-    if (searchArray[mid] === target) {
+    if (sortedArrayA[mid] === target) {
       found = mid;
       break;
-    } else if (searchArray[mid] < target) {
+    } else if (sortedArrayA[mid] < target) {
       // look in the right half
       start = mid + 1;
     } else {
